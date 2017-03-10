@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="image_baner" style="height: 30vh;">
+    <img ng-src="{{$ctrl.book.cover}}" class="image_banners">
+    <div ng-if="$ctrl.logined" class="banner_book card">
+      <i class="icon_heard fa fa-heart-o fa-2x" aria-hidden="true"></i>
+    </div>
+    <div ng-if="!$ctrl.logined" class="banner_book card" ui-sref="login({loginID: 2})">
+      <i class="click icon_heard fa fa-heart-o fa-2x" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="row name_book a">
+    <div class="col s12" style=" height: 12vh;">
+      <p style="font-size: 16px!important;" class="style-text">{{$ctrl.review.name}}</p>
+      <p class="style-text">15 lượt thích</p>
+    </div>
+  </div>
+  <div class="row a">
+    <div class="col s12 information">
+      <div class="col s6" style="font-weight: bold; height: 12vh; border-right: 1px solid black;
+  border-color: rgb(160,160,255);">
+        <p class="style-text" style="font-size: 16px;">{{$ctrl.review.star}}/5</p>
+        <p style="color: dodgerblue; padding-left: 10px;">({{$ctrl.review.user_rate}} nhận xét)</p>
+      </div>
+      <div class="col s6" style="font-weight: bold; height: 12vh;">
+        <p class="style-text" style="font-size: 16px;">Tác giả</p>
+        <p style="color: dodgerblue; padding-left: 10px;">M2PQ</p>
+      </div>
+    </div>
+    <div class="col s12 information" style="margin-top: 10px;">
+      <p style="font-size: 16px; font-weight: bold; padding-top: 10px;">Mô tả sách</p>
+      <p style="padding-top: 10px;" class="over">{{$ctrl.review.description}}</p>
+      <div class="" style="height: 25px; border: 1px; border-color: rgb(160,160,255);
+       text-align: center; background-color: #99CC99; width: 100%;
+       margin-bottom: 10px;" ui-sref="readBooks({ reviewId: $ctrl.review._id })">
+        <p style="color: white; font-weight: bold;">ĐỌC SÁCH</p>
+      </div>
+    </div>
+  </div>
+  <div ng-if="$ctrl.logined && !$ctrl.bookcase" class="fixed-action-btn add-mine" ng-click="$ctrl.add($ctrl.review._id)">
+    <a class="btn-floating btn-large red">
+      <i class="material-icons">shopping_cart</i>
+    </a>
+  </div>
+  <div ng-if="$ctrl.logined && $ctrl.bookcase" class="fixed-action-btn remove-user" ng-click="$ctrl.remove($ctrl.review._id)">
+    <a class="btn-floating btn-large red">
+      <i class="material-icons">remove_shopping_cart</i>
+    </a>
+  </div>
+  <div ng-if="!$ctrl.logined" class="fixed-action-btn remove-mine" ui-sref="login({loginID: 2})">
+    <a class="btn-floating btn-large red">
+      <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+<style>
+  .image_banners {
+    height: 80%;
+    padding-top: 10px;
+    margin-left: auto;
+	  margin-right: auto;
+  }
+  .image_baner {
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-color: rgb(160,160,255);
+  }
+
+  .banner_book {
+    position: absolute;
+    top: 34%;
+    right: 10%;
+    border-radius: 5px;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .icon_heard { 
+    margin-top: 25%; 
+  }
+
+  .name_book {
+    background-color: white;
+    z-index: 0;
+    border-bottom: 1px solid black;
+    border-color: rgb(160,160,255);
+  }
+  .style-text {
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+
+  .information {
+    background-color: white;
+    border-bottom: 1px solid black;
+    border-color: rgb(160,160,255);
+  }
+
+  .a {
+    margin-bottom: 0!important;
+  }
+  .over {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 13;
+    -webkit-box-orient: vertical; 
+  }
+</style>
