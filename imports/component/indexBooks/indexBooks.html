@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="col m6 l4" ng-repeat="category in $ctrl.categories track by $index">
+    <!--Category name-->
+    <a ui-sref="showallBooks({ categoryId: category.id })">
+      <div class="category-name indigo-text">{{category.category}}</div>
+      <span class="indigo-text caregory-more-btn">thêm</span>
+    </a>
+    <!--End Category name-->
+    <!--Books-->
+    <div class="row-fluid">
+      <div class="item-card z-depth-1" ng-repeat="book in category.data_book track by $index">
+        <span class="book-title truncate indigo-text text-darken-4">{{book.name}}</span>
+        <i class="item-more-btn material-icons indigo-text text-darken-4">more_vert</i>
+        <span class="item-link" ui-sref="showReviews({ bookId: book.id })"></span>
+        <img ng-src="{{book.cover}}" alt="book-title" class="book-cover">
+      </div>
+      <div class="col s5 item-card z-depth-1" ui-sref="showallBooks({ categoryId: category.id })">
+        <img src="images/more-card.jpg" class="book-cover" style="height: 100%; margin: 0;"></img>
+      </div>
+      <!--End Books-->
+    </div>
+  </div>
+</div>
