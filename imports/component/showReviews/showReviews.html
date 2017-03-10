@@ -1,0 +1,32 @@
+<div class="container">
+  <div ng-if="!$ctrl.all_review">
+    <p>Chưa có dữ liệu</p>
+  </div>
+  <div ng-if="$ctrl.all_review"> 
+    <div class="col s12 m8 offset-m2 l6 offset-l3" ng-repeat="review in $ctrl.all_review">
+      <div class="card-panel grey lighten-5 z-depth-1 info" 
+      ui-sref="showoneReviews({ reviewId: review._id })"
+      style="height: 25vh;">
+        <div class="row valign-wrapper">
+          <div class="col s2">
+            <img ng-src="{{$ctrl.book_cover.cover}}" alt="" class="responsive-img">
+          </div>
+          <div class="col s10">
+            <p>{{review.name}}</p>
+            <p class="black-text ellipsis">
+              {{review.description}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .ellipsis { 
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
+  }
+</style>
