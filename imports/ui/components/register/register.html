@@ -1,0 +1,29 @@
+<center class="container indigo white-text" style="width: 100% !important; max-width: 640px; height: calc(100vh - 45px); border-radius: 1%">
+  <form class="col s12" ng-submit="$ctrl.registerUser($ctrl.username,$ctrl.password)">
+    <div class="row center">
+      <img src="images/logo.png" alt="" class="responsive-img" style="max-height:90px; margin-top: 10px">
+      <div>BookWorm</div>
+        <h5>ĐĂNG KÝ</h5>
+    </div>
+    <div class="row center pink-text" ng-if="$ctrl.errors">
+      {{$ctrl.errors}}
+    </div>
+    <div class='row'>
+      <div class='input-field col s12 m8 offset-m2 l6 offset-l3 left-align'>
+        <input id="username" type="text" class="validate grey-text text-lighten-4" ng-model="$ctrl.username" required="true">
+        <label for="username">Tên người dùng</label>
+      </div>
+      <div class='input-field col s12 m8 offset-m2 l6 offset-l3 left-align'>
+        <input class='validate grey-text text-lighten-4' type='password' name='password' id='password' ng-model="$ctrl.password"
+          required="true">
+        <label for='password'>Mật khẩu</label>
+      </div>
+    </div>
+    <div class="row">
+      <button type='submit' name='btn_login' class='col s12 m8 offset-m2 l6 offset-l3 btn btn-large waves-effect amber'>Đăng ký</button>
+    </div>
+  </form>
+  <div class="row center" style="margin-top: 20px;">
+    <a class='amber-text' href="/login/1"><strong>Bạn đã có tài khoản? Đăng nhập</strong></a>
+  </div>
+</center>
