@@ -1,0 +1,13 @@
+<div class="container" style="margin-right: 1%;">
+  <div ng-if="!$ctrl.review">
+    <p>Bạn chưa thêm cuốn sách nào vào thư viên</p>
+  </div>
+  <div class="category-name indigo-text">Thư viện sách của bạn</div>
+  <div class="item-card z-depth-1" ng-repeat="book in $ctrl.review" style="margin-top: 5px;"
+   ui-sref="showoneReviews({ reviewId: book.review_id })">
+    <span class="book-title indigo-text truncate">{{book.book_name}}</span>
+    <i class="item-more-btn material-icons indigo-text text-darken-4">more_vert</i>
+    <span class="item-link"></span>
+    <img ng-src="{{book.book_cover}}" alt="book-title" class="book-cover">
+  </div>
+</div>
