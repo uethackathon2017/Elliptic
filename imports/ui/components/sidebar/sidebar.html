@@ -1,0 +1,59 @@
+<ul id="slide-out" class="side-nav indigo">
+  <li>
+    <div class="userView">
+      <div class="background">
+        <img src="http://pop.h-cdn.co/assets/15/26/980x490/landscape-1435254275-bookshelf.jpg" style="object-fit: cover; height: 100%;">
+      </div>
+      <div class="background user-view-gradient"></div>
+      <div ng-if="$ctrl.logined">
+        <a href="/profile" ng-if="$ctrl.user.profile.avatar">
+          <img class="circle center-block" src="{{$ctrl.user.profile.avatar}}" style="object-fit: cover;">
+        </a>
+        <a href="/profile" ng-if="!$ctrl.user.profile.avatar">
+          <img class="circle center-block" src="https://smallbusiness.fedex.com/content/dam/SMB/SMAC/Wide/Shipping-Made-Easy-A.jpg"
+            style="object-fit: cover;">
+        </a>
+        <div class="white-text center">{{ $ctrl.user.username }}</div>
+      </div>
+      <div ng-if="!$ctrl.logined" href="/login/1">
+        <img class="circle center-block" src="https://smallbusiness.fedex.com/content/dam/SMB/SMAC/Wide/Shipping-Made-Easy-A.jpg"
+          style="object-fit: cover;">
+        <div class="white-text center">Khách</div>
+      </div>
+    </div>
+  </li>
+  <li><a href="/" class="waves-effect white-text"><i class="fa fa-home fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Trang chủ</span></a>
+  </li>
+  <div ng-if="$ctrl.logined">
+    <li><a href="/bookCases" class="waves-effect white-text"><i class="fa fa-book fa-lg white-text"></i><span class="menu-text">Kho sách</span></a></li>
+    <li><a href="#!" class="waves-effect white-text"><i class="fa fa-heart fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Sách yêu thích</span></a></li>
+    <li><a href="/upload" class="waves-effect white-text" onclick="window.location.reload(true);"><i class="fa fa-pencil fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Viết sách</span></a></li>
+    <li><a href="/admin/categories" class="waves-effect white-text"><i class="fa fa-cogs fa-lg white-text"></i><span class="menu-text">Quản trị</span></a></li>
+    <li><a href="/logout" class="waves-effect white-text"><i class="fa fa-sign-out fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Đăng xuất</span></a></li>
+  </div>
+  </li>
+  <div ng-if="!$ctrl.logined">
+    <li><a href="/login/1" class="waves-effect white-text"><i class="fa fa-sign-in fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Đăng nhập</span></a></li>
+    <li><a href="/register" class="waves-effect white-text"><i class="fa fa-user-plus fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Đăng ký</span></a></li>
+  </div>
+  <li>
+    <div class="divider amber"></div>
+  </li>
+  <li><a class="subheader amber-text">Hỗ trợ</a></li>
+  <li><a class="white-text" href="#!">Elliptic</a></li>
+</ul>
+<style>
+  .side-nav li>a>i {
+    margin-right: 0;
+  }
+  
+  .menu-text:before {
+    content: "|";
+    margin: 0 10px;
+    color: #ffc107;
+  }
+  
+  .userView {
+    height: 30vh;
+  }
+</style>

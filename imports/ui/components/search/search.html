@@ -1,0 +1,21 @@
+<div class="container" style="margin-right: 1%;" ng-if="$ctrl.books">
+  <div class="item-card z-depth-1" ng-repeat="book in $ctrl.books" style="margin-top: 5px;">
+    <span class="book-title indigo-text truncate">{{book.name}}</span>
+    <i class="item-more-btn material-icons indigo-text text-darken-4">more_vert</i>
+    <span class="item-link" ui-sref="showReviews({ bookId: book.id })"></span>
+    <img ng-src="{{book.cover}}" alt="book-title" class="book-cover">
+  </div>
+</div>
+<div ng-if="!$ctrl.books.count()">
+  <div class="progress">
+    <div class="indeterminate"></div>
+  </div>
+</div>
+<input type="hidden" name="" id="test" value="{{$ctrl.params}}">
+<script>
+  setTimeout(function () {
+    var test = $('#test').val();
+    $('#search').val(test);
+  }, 1000);
+  setTimeout($('.progress'),2000);
+</script>

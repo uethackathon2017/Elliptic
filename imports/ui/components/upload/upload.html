@@ -1,0 +1,13 @@
+<script>
+	$('document').ready(function() {
+		$('#summernote').summernote();
+	});
+</script>
+
+<div class="container">
+	<form >
+		<input type="text" placeholder="Titlte" ng-model="$ctrl.title">
+		<input id="summernote" value="aaaa">
+		<button class="btn" ng-click="$ctrl.save($ctrl.title,$ctrl.content)">Save</button>	
+	</form>
+</div>
