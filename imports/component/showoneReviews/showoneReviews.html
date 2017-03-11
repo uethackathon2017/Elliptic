@@ -31,7 +31,7 @@
       <p style="padding-top: 10px;" class="over">{{$ctrl.review.description}}</p>
       <div class="" style="height: 25px; border: 1px; border-color: rgb(160,160,255);
        text-align: center; background-color: #99CC99; width: 100%;
-       margin-bottom: 10px;" ui-sref="readBooks({ reviewId: $ctrl.review._id })">
+       margin-bottom: 10px;" ui-sref="readBooks({ reviewId: $ctrl.review._id })" ng-click="$ctrl.view($ctrl.review._id)">
         <p style="color: white; font-weight: bold;">ĐỌC SÁCH</p>
       </div>
     </div>

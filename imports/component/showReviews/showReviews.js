@@ -12,16 +12,28 @@ class ShowReviewsCtrl {
     'ngInject';
     $('navbar').show();
  
-    //this.bookId = $stateParams.bookId;
     $scope.viewModel(this);
     this.helpers({
       all_review() {
+        var data = [];
         var book_id = $stateParams.bookId;
         console.log(book_id);
         var all_reviews = Reviews.find({ "book_id": book_id });
-        if(all_reviews.count() == 0)
+        if (all_reviews.count() == 0) {
           return 0;  
-        return all_reviews; 
+        }
+        all_reviews.forEach(function (review) {
+          
+          var user_avatar = Meteor.users.findOne({ "profile.name": review.user_id });
+          var tmp = {
+            "user_name": review.user_id, "user_rate": review.user_rate,
+            "user_view": review.user_view, "name": review.name,
+            "star": review.star, "avatar": user_avatar.profile.avatar,
+            "_id": review._id, "description": review.description
+          }
+          data.push(tmp);
+        });
+        return data; 
       },
       book_cover() {
         var book_id = $stateParams.bookId;

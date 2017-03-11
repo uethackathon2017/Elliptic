@@ -105,6 +105,17 @@ class ShowoneReviewsCtrl {
         }
     });
   }
+  view(reviewID) {
+    var reviews = Reviews.findOne({ "_id": reviewID });
+    var number = parseInt(reviews.user_view);
+    Reviews.update({
+      "_id": reviewID
+    }, {
+        $set: {
+          "user_view": (number + 1).toString()
+        }
+    })
+  }
 }
 const name = 'showoneReviews';
 export default angular.module(name, [

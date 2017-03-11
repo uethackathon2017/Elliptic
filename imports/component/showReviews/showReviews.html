@@ -1,32 +1,65 @@
 <div class="container">
-  <div ng-if="!$ctrl.all_review">
-    <p>Chưa có dữ liệu</p>
-  </div>
-  <div ng-if="$ctrl.all_review"> 
-    <div class="col s12 m8 offset-m2 l6 offset-l3" ng-repeat="review in $ctrl.all_review">
-      <div class="card-panel grey lighten-5 z-depth-1 info" 
-      ui-sref="showoneReviews({ reviewId: review._id })"
-      style="height: 25vh;">
-        <div class="row valign-wrapper">
-          <div class="col s2">
-            <img ng-src="{{$ctrl.book_cover.cover}}" alt="" class="responsive-img">
-          </div>
-          <div class="col s10">
-            <p>{{review.name}}</p>
-            <p class="black-text ellipsis">
-              {{review.description}}
-            </p>
-          </div>
+  <div ng-if="$ctrl.all_review" style="margin: 45px 0px 0px 0px;" class="row">
+    <h5 class="center indigo-text ellipsis" style="margin-top: 64px; -webkit-line-clamp: 1;">{{$ctrl.book_cover.name}}</h5>
+    <div class="col s12 m8 offset-m2 l5 white z-depth-1" ng-repeat="review in $ctrl.all_review" ui-sref="showoneReviews({ reviewId: review._id })"
+      style="padding: 5px 10px; max-height: 30vh; margin-top: 1vh; border-radius: 1%">
+      <img ng-src="{{review.avatar}}" alt="{{review.name}}" class="user-image responsive-image circle">
+      <div style="margin-left: 1%; display: inline-block; position: absolute; margin-right: 3%;">
+        <h5 class="amber-text">{{review.user_name}}</h5>
+        <div class="amber-text book-rating">
+          <i class="material-icons" style="margin-right: -5px;">star</i>
+          <i class="material-icons" style="margin-right: -5px;">star</i>
+          <i class="material-icons" style="margin-right: -5px;">star</i>
+          <i class="material-icons" style="margin-right: -5px;">star</i>
+          <i class="material-icons" style="margin-right: -5px;">star_border</i>
         </div>
+        <div class="amber-text reviews-num">{{review.user_rate}} đánh giá</div>
+        <div class="indigo-text read-num">{{review.user_view}} người đọc</div>
       </div>
+      <span class="book-description ellipsis">{{review.description}}</span>
     </div>
   </div>
+  <div ng-if="!$ctrl.all_review" style="margin-top: 50vh;">
+    <h5 class="indigo-text center">Chưa có dữ liệu</h5>
+  </div>
 </div>
+<!--<img ng-src="{{$ctrl.book_cover.cover}}" alt="{{review.name}}">
+{{review.name}}
+{{review.description}}-->
 <style>
-  .ellipsis { 
+  .user-image {
+    display: inline-block;
+    object-fit: cover;
+    height: 6em;
+    width: 6em;
+    margin: unset;
+    vertical-align: middle
+  }
+  
+  .book-rating {
+    display: inline-block;
+    margin-top: -6px;
+    margin-bottom: -2px;
+  }
+  
+  .reviews-num {
+    font-size: 12px;
+    display: inline-block;
+    margin-left: 5px;
+    font-style: italic;
+    font-weight: 600;
+    float: right
+  }
+  
+  .read-num {
+    font-style: italic;
+    margin-top: -4px;
+  }
+  
+  .ellipsis {
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 </style>
