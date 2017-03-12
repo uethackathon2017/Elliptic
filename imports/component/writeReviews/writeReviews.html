@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="book" style="text-align: center;">
+    <img src="{{$ctrl.book.cover}}" alt="">
+    <h5>{{$ctrl.book.name}}</h5>
+  </div>
+  <form>
+    <div class="description">
+      <p>Mô tả:</p>
+      <textarea rows="3" id="mota"></textarea>
+    </div>
+    <p>Nội dung:</p>
+    <div class="note">
+      <div class="editable nd">
+      </div>
+    </div>
+    <button ng-click="$ctrl.save()" class="btn">Save</button>
+  </form>
+</div>
+<script src="js/medium.js"></script>
+<script>var editor = new MediumEditor('.editable');</script>
+<style>
+  .note {
+    min-height: 10vh;
+    border: 1px solid black;
+  }
+  .nd {
+    padding: 10px;
+  }
+</style>

@@ -1,0 +1,21 @@
+<div class="row" style="margin-top: 80px">
+  <ul class="collection">
+    <li ng-repeat="category in $ctrl.categories" class="collection-item" style="margin-bottom: 2px;">
+      <div style="display: inline-block;">{{category.name}}</div>
+      <div style="float: right;">
+        <a href="#" ui-sref="adminEditCategories({categoryId : category._id})">
+          <i class="material-icons amber-text">edit</i>
+        </a>
+        <a href="#" ng-click="$ctrl.deleteCategory(category)" onclick="confirm('Bạn có chắc chắn xóa?')">
+          <i class="material-icons amber-text">delete_forever</i>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red" ui-sref="adminAddCategories">
+    <i class="large material-icons">add</i>
+  </a>
+</div>

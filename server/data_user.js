@@ -35,13 +35,25 @@
 //   images.push(image_2);
 //   images.push(image_3);
 //   images.push(image_4);
-//   for (var i = 0; i < 5; i++) {
+//   for (var i = 0; i < 2; i++) {
 //     Accounts.createUser({
 // 			username: usernames[i],
 // 			password: '12345678',
 // 			profile: {
 //         name: all_name[i],
-//         avatar: images[i]
+//         avatar: images[i],
+//         point : 100
+// 			}
+// 		})
+//   }
+//   for (var i = 0; i < 2; i++) {
+//     Accounts.createUser({
+// 			username: usernames[i + 2],
+// 			password: '12345678',
+// 			profile: {
+//         name: all_name[i + 2],
+//         avatar: images[i + 2],
+//         point: 300
 // 			}
 // 		})
 //   }

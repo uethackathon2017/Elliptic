@@ -47,7 +47,6 @@ class ReadBooksCtrl {
 				return false;
 			}
     })
-    console.log(1);
   }
 }
 const name = 'readBooks';
@@ -66,13 +65,48 @@ function config($stateProvider) {
     url: '/readBooks/:reviewId',
     template: '<read-books></read-books>',
     onEnter: function() {
-      $('document').ready(function(){
-        if($('#abc') != 'undefined')
-          console.log("dug");
-          // window.location.reload(true);
-        return false;
-      })
-    }
-  });
+      console.log(Date.now());
+      Session.set("start", Date.now());
+    },
+    onExit : function(){
+     var tmp_time = Session.get("start");
+     var timming = Date.now() - tmp_time;
+     var user = Meteor.user();
+     var id = this.params.reviewId; 
+     var tmp = user.profile.readed_book;
+     if (!tmp) {
+       var tmp_readed = [];
+       var data = { "review_id": id, "hour": timming };
+       tmp_readed.push(data);
+       	Meteor.users.update({
+					_id : Meteor.userId()
+				},{
+					$set : {
+						"profile.readed_book" : data,
+					}
+            });
+        console.log(Meteor.user());
+     } else {
+       var tmp_readed = [];
+       var datas = tmp;
+       for (var i = 0; i < datas.length; i++) {
+         if (data[i].review_id == id) {
+           var time_old = data[i].hour;
+           var time_new = timming + parseInt(time_old);
+           data[i].hour = time_new;
+           break;
+         }
+       }
+       Meteor.users.update({
+					_id : Meteor.userId()
+				},{
+					$set : {
+						"profile.readed_book" : datas,
+					}
+      });
+     }
+     
+  }
+});
 }
 

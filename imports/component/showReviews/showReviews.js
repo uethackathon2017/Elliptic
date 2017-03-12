@@ -25,13 +25,15 @@ class ShowReviewsCtrl {
         all_reviews.forEach(function (review) {
           
           var user_avatar = Meteor.users.findOne({ "profile.name": review.user_id });
-          var tmp = {
+          if (user_avatar) {
+            var tmp = {
             "user_name": review.user_id, "user_rate": review.user_rate,
             "user_view": review.user_view, "name": review.name,
-            "star": review.star, "avatar": user_avatar.profile.avatar,
+            "star": parseInt(review.star), "avatar": user_avatar.profile.avatar,
             "_id": review._id, "description": review.description
+            }
+            data.push(tmp);
           }
-          data.push(tmp);
         });
         return data; 
       },

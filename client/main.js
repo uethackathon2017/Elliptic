@@ -6,7 +6,7 @@ import indexBooks from '../imports/component/indexBooks/indexBooks';
 import navbar from '../imports/ui/components/navbar/navbar.js';
 class mainCtrl{
 	constructor(){
-		
+		$('#search').val('');
 	}
 }
 

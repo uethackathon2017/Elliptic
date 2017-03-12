@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+      <div class="col s12" style="text-align: center;">
+          <p>Đánh giá của bạn</p>
+      </div>
+      <div class="col s12 amber-text book-rating" style="text-align: center;">
+          <i class="fa fa-2x fa-star-o hover_star" aria-hidden="true" id="1"></i>
+          <i class="fa fa-2x fa-star-o hover_star" aria-hidden="true" id="2"></i>
+          <i class="fa fa-2x fa-star-o hover_star" aria-hidden="true" id='3'></i>
+          <i class="fa fa-2x fa-star-o hover_star" aria-hidden="true" id="4"></i>
+          <i class="fa fa-2x fa-star-o hover_star" aria-hidden="true" id="5"></i>
+      </div>
+      <div class="col s12" style="margin-top: 15px; padding-left: 60px; padding-right: 60px;">
+        <form>
+          <p>Tiêu đề:</p>
+          <input type="hidden" value="0" id="value_star" ng-model="$ctrl.star">
+          <textarea></textarea>
+          <p>Viết bình luận của bạn:</p>
+          <textarea name="" id="content"></textarea>
+          <textarea ng-model="$ctrl.comment"></textarea>
+          <button ng-click="$ctrl.save($ctrl.comment)" class="btn">Save</button>
+        </form>
+      </div>
+  </div>
+</div>
+<script>
+  $('document').ready(function() {
+    console.log($('hover_star').text());
+    $('.hover_star').on('click', function(){
+      var tmp = $(this).attr('id');
+      var number = parseInt(tmp);
+      $('#value_star').val(number);
+      for(var i = 1; i <= number; i ++) {
+        var id = '#' + i.toString();
+        $(id).removeClass('fa-star-o');
+        $(id).addClass('fa-star');
+      }
+      for(var i = number + 1; i <= 5; i ++) {
+        var id = '#' + i.toString();
+        $(id).removeClass('fa-star');
+        $(id).addClass('fa-star-o');
+      }
+    })
+  });
+</script>
