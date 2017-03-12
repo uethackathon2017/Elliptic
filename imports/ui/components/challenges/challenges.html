@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row" style="margin-top: 150px">
+		<form style="background-color: blue; height: 100%" ng-submit="$ctrl.setTime($ctrl.time)" ng-if="!$ctrl.disable">
+	      <div class="row">
+	        <div class="input-field col s8 offset-s2">
+	          <input id="hchallenges" type="number" class="validate" ng-model="$ctrl.time">
+	          <label for="hchallenges">So gio doc trong 1 tuan</label>
+	          <button class="btn btn-block" style="width: 100%;background-color: green">Dat gio</button>
+	        </div>
+	      </div>			
+		</form>
+		<div ng-if="$ctrl.disable">
+		  <div class="progress">
+      		<div class="determinate" style="width: {{ctrl.progress}}%"></div>
+  		</div>
+			<p>Da doc/dat cuoc(min/min):{{$ctrl.totalTime}}/{{$ctrl.timeCh}}</p>			
+		</div>
+	</div>
+</div>	

@@ -8,6 +8,6 @@ Meteor.startup(() => {
   // Reviews.remove({});
 });
 
-Meteor.AppCache.config({
-  onlineOnly: ['/modules.js']
-});
+// Meteor.AppCache.config({
+//   onlineOnly: ['/modules.js']
+// });

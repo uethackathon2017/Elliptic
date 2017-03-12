@@ -13,7 +13,8 @@ class registerCtrl{
 			username: username,
 			password: password,
 			profile: {
-				name: username
+				name: username,
+				point: 50
 			}
 		}, function (err) {
 			if(err){

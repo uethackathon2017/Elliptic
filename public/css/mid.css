@@ -1,0 +1,63 @@
+
+/*Desktop style*/
+
+@media only screen and (min-width: 601px) {
+  #search {
+    float: left;
+    margin-top: 9px;
+    border-bottom: 0;
+    font-size: large;
+  }
+  navbar nav {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    max-height: 56px;
+    width: 100%
+  }
+  .nav-wrapper {
+    height: 64px;
+  }
+  .container {
+    margin-top: 64px !important;
+  }
+  ui-view {
+    padding-left: 300px;
+  }
+  .item-card {
+    display: inline-block;
+    position: relative;
+    background-color: #ffffff;
+    margin-right: 0.5rem;
+    width: 195px;
+    height: 315px;
+    padding: 0 !important;
+  }
+  .book-cover {
+    display: block;
+    object-fit: cover;
+    width: 96%;
+    height: calc(100% - 64px);
+    margin-top: 2%;
+    margin-left: 2%;
+  }
+  .book-title {
+    position: absolute;
+    max-width: calc(100% - 24px);
+    left: 2px;
+    bottom: 15px;
+    font-size: large;
+  }
+  .item-more-btn {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+  }
+  .item-link {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 64px);
+    margin-top: 1%;
+    margin-left: 1%;
+  }
+}

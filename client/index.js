@@ -9,6 +9,7 @@ import sidebar from '../imports/ui/components/sidebar/sidebar.js';
 import navbar from '../imports/ui/components/navbar/navbar.js';
 import login from '../imports/ui/components/login/login.js';
 import register from '../imports/ui/components/register/register.js';
+import profile from '../imports/ui/components/profile/profile.js';
 import main from './main.js';
 
 // var module = angular.module('bookworm-app',[angularMeteor,uiRouter, sidebar.name,navbar.name, main.name]);

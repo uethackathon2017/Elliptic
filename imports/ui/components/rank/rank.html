@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="row">
+		<table class="responsive-table">
+			<thead>
+				<th>STT</th>
+				<th>Ten dang nhap</th>
+				<th>So diem</th>
+			</thead>
+			<tbody ng-repeat="user in $ctrl.topUsers track by $index">
+				<td>{{$index+1}}</td>
+				<td>{{user.username || user.services.facebook.name }}</td>
+				<td>{{user.profile.point || 0}}</td>
+			</tbody>
+		</table>
+	</div>
+</div>

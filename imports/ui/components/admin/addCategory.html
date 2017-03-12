@@ -1,0 +1,10 @@
+<div class="container">
+	<div class="row" style="margin-top: 20px">
+		<form>
+		  Category name: <input type="text" ng-model="$ctrl.category.name" />
+		  Description: <input type="text" ng-model="$ctr.category.description" />
+		   <button ng-click="$ctrl.save($ctrl.category.name,$ctr.category.description)" class="btn">Save</button>
+		</form>	
+	</div>
+	<button ui-sref="adminCategory">Back</button>	
+</div>

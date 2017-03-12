@@ -1,20 +1,27 @@
 <div class="container">
+  <input type="hidden" id="number" value="{{$ctrl.all_review.length}}">
   <div ng-if="$ctrl.all_review" style="margin: 45px 0px 0px 0px;" class="row">
     <h5 class="center indigo-text ellipsis" style="margin-top: 64px; -webkit-line-clamp: 1;">{{$ctrl.book_cover.name}}</h5>
-    <div class="col s12 m8 offset-m2 l5 white z-depth-1" ng-repeat="review in $ctrl.all_review" ui-sref="showoneReviews({ reviewId: review._id })"
+    <div class="col s12 m8 offset-m2 l5 white z-depth-1" ng-repeat="review in $ctrl.all_review track by $index" ui-sref="showoneReviews({ reviewId: review._id })"
       style="padding: 5px 10px; max-height: 30vh; margin-top: 1vh; border-radius: 1%">
       <img ng-src="{{review.avatar}}" alt="{{review.name}}" class="user-image responsive-image circle">
       <div style="margin-left: 1%; display: inline-block; position: absolute; margin-right: 3%;">
         <h5 class="amber-text">{{review.user_name}}</h5>
+        <input type="hidden" id="star{{$index}}" value="{{review.star}}">
         <div class="amber-text book-rating">
-          <i class="material-icons" style="margin-right: -5px;">star</i>
-          <i class="material-icons" style="margin-right: -5px;">star</i>
-          <i class="material-icons" style="margin-right: -5px;">star</i>
-          <i class="material-icons" style="margin-right: -5px;">star</i>
-          <i class="material-icons" style="margin-right: -5px;">star_border</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-0{{$index}}">star</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-1{{$index}}">star</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-2{{$index}}">star</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-3{{$index}}">star</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px; " id="true-4{{$index}}">star</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-0{{$index}}">star_border</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-1{{$index}}">star_border</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-2{{$index}}">star_border</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-3{{$index}}">star_border</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-4{{$index}}">star_border</i>
         </div>
         <div class="amber-text reviews-num">{{review.user_rate}} đánh giá</div>
-        <div class="indigo-text read-num">{{review.user_view}} người đọc</div>
+        <div class="indigo-text read-num">{{review.user_view}} lượt xem</div>
       </div>
       <span class="book-description ellipsis">{{review.description}}</span>
     </div>
@@ -22,10 +29,12 @@
   <div ng-if="!$ctrl.all_review" style="margin-top: 50vh;">
     <h5 class="indigo-text center">Chưa có dữ liệu</h5>
   </div>
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red" ui-sref="writeReviews({reviewId: $ctrl.book_cover._id})">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
 </div>
-<!--<img ng-src="{{$ctrl.book_cover.cover}}" alt="{{review.name}}">
-{{review.name}}
-{{review.description}}-->
 <style>
   .user-image {
     display: inline-block;
@@ -34,6 +43,10 @@
     width: 6em;
     margin: unset;
     vertical-align: middle
+  }
+
+  .stars_hide {
+    display: none;
   }
   
   .book-rating {
@@ -63,3 +76,20 @@
     -webkit-box-orient: vertical;
   }
 </style>
+<script>
+  setTimeout(function(){
+    var number = $('#number').val();
+    for(var i = 0; i < parseInt(number); i ++) {
+      var tmp = '#star' + i.toString();
+      var true_star = $(tmp).val();
+      for(var j = 0; j < parseInt(true_star); j ++) {
+        var pos1 = '#true-' + j.toString() + i.toString();
+        $(pos1).show();
+      }
+      for(var k = 0; k < 5 - parseInt(true_star); k ++) {
+        var pos2 = '#false-' + k.toString() + i.toString();
+        $(pos2).show();
+      }
+    }
+  }, 1000);
+</script>
