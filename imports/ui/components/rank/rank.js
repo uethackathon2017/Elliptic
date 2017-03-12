@@ -7,6 +7,7 @@ class rankCtrl{
 		$scope.viewModel(this);
 		this.helpers({
 			topUsers(){
+				tops = [];
 				var top = Meteor.users.find({},{
 					sort : {
 						"profile.point" : -1
@@ -15,7 +16,7 @@ class rankCtrl{
 					limit : 10
 				});
 				return top;
-			}
+			},
 		})
 	}
 }

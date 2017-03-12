@@ -32,35 +32,42 @@ class challengesCtrl{
 				var tmp = Meteor.users.findOne({_id : Meteor.userId()});
 				var total_readed = 0;
 				if(tmp){
-					var book_cases = tmp.profile.book_cases;
-					for( i = 0; i < book_cases.length ; i ++){
-						total_readed += book_cases[i].timming;
+					var readed_book = tmp.profile.readed_book;
+					if(readed_book){
+						for( i = 0; i < readed_book.length ; i ++){
+							total_readed += readed_book[i].timming;
+							}
+						}
+						if(total_readed){
+							return Math.round( total_readed/1000/60);
+						}						
 					}
-				}
-				if(total_readed){
-					return Math.round( total_readed/1000/60);
-				}
+					return total_readed;
+
 			},
 			progress(){
 				var tmp = Meteor.users.findOne({_id : Meteor.userId()});
 				var total_readed = 0;
 				var timech = 0;
 				if(tmp){
-					var book_cases = tmp.profile.book_cases;
+					var readed_book = tmp.profile.readed_book;
 					timech = tmp.profile.timech;
-					for( i = 0; i < book_cases.length ; i ++){
-						total_readed += book_cases[i].timming;
+					console.log(tmp);
+					if(readed_book){
+						console.log(readed_book);
+						for( i = 0; i < readed_book.length ; i ++){
+							total_readed += readed_book[i].timming;
+							if(total_readed){
+								console.log(total_readed/(timech * 1000 * 60 *60) * 100);
+								return Math.round(total_readed/(timech * 1000 * 60 * 60) * 100);
+								}							
+							}
+						}
 					}
+					return 0;
 				}
-				if(total_readed){
-					console.log(total_readed/(timech * 1000 * 60 *60) * 100);
-					return Math.round(total_readed/(timech * 1000 * 60 * 60) * 100);
-				}
-
-			}
-		})
-
-	}
+			})
+		}
 
 	setTime(time){
 		console.log(time);

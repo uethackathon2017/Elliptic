@@ -1,229 +1,130 @@
-<div class="container">
-  <div class="image_baner" style="height: 30vh;">
-    <img ng-src="{{$ctrl.book.cover}}" class="image_banners">
-    <div ng-if="$ctrl.logined" class="banner_book card">
-      <i class="icon_heard fa fa-heart-o fa-2x" aria-hidden="true"></i>
-    </div>
-    <div ng-if="!$ctrl.logined" class="banner_book card" ui-sref="login({loginID: 2})">
-      <i class="click icon_heard fa fa-heart-o fa-2x" aria-hidden="true"></i>
-    </div>
+<div class="container" style="padding-top: 0;">
+  <div class="image_baner indigo-gradient">
+    <img class="z-depth-2" ng-src="{{$ctrl.book.cover}}" style="height: 100%">
   </div>
-  <div class="row name_book a">
-    <div class="col s12" style=" height: 12vh;">
-      <p style="font-size: 16px!important;" class="style-text">{{$ctrl.review.name}}</p>
-      <p class="style-text">15 lượt thích</p>
+  <div class="row indigo a" style="border-bottom: 1px solid;border-color: white;">
+    <div class="col s12 center" style="height: 12vh;">
+      <h5 class="amber-text ellipsis" style="-webkit-line-clamp: 1;">{{$ctrl.review.name}}</h5>
+      <div class="white-text">15 lượt thích</div>
     </div>
   </div>
   <div class="row a">
-    <div class="col s12 information">
-      <div class="col s6" style="font-weight: bold; height: 12vh; border-right: 1px solid black;
-  border-color: rgb(160,160,255);">
+    <div class="col s12 information center indigo white-text">
+      <div class="col s6" style="font-weight: bold; height: 13vh; border-right: 1px solid; border-color: white;">
         <input type="hidden" id="star_review" value="{{$ctrl.review.star}}">
-        <div class="style-text col s3" style="font-size: 16px;">{{$ctrl.review.star}}/5</div>
-        <div class="amber-text book-rating col s9">
+        <!--<div class="style-text col s3" style="font-size: 16px;">{{$ctrl.review.star}}/5</div>-->
+        <div class="amber-text col s12" style="margin-top: 2vh">
+          <i class="material-icons" style="margin-right: -5px;" id="true-0">star</i>
+          <i class="material-icons" style="margin-right: -5px;" id="true-1">star</i>
+          <i class="material-icons" style="margin-right: -5px;" id="true-2">star</i>
+          <i class="material-icons" style="margin-right: -5px;" id="true-3">star</i>
+          <i class="material-icons" style="margin-right: -5px;" id="true-4">star</i>
+        </div>
+        <!--<div class="amber-text  col s9">
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-0">star</i>
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-1">star</i>
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-2">star</i>
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-3">star</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px; " id="true-4">star</i>
+          <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-4">star</i>
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-0">star_border</i>
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-1">star_border</i>
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-2">star_border</i>
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-3">star_border</i>
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="false-4">star_border</i>
-        </div>
-        <p style="color: dodgerblue; padding-left: 10px;">({{$ctrl.review.user_rate}} nhận xét)</p>
+        </div>-->
+        <div class="center">({{$ctrl.review.user_rate}} nhận xét)</div>
       </div>
-      <div class="col s6" style="font-weight: bold; height: 12vh;">
-        <p class="style-text" style="font-size: 16px;">Tác giả</p>
-        <p style="color: dodgerblue; padding-left: 10px;">{{$ctrl.review.user_id}}</p>
-      </div>
+      <div class="col s6 center" style="font-size:18px;height: 13vh;line-height: 13vh;">{{$ctrl.review.user_id}}</div>
     </div>
-    <div class="col s12 information" style="margin-top: 10px;">
-      <p style="font-size: 16px; font-weight: bold; padding-top: 10px;">Mô tả sách</p>
-      <p style="padding-top: 10px;" class="over">{{$ctrl.review.description}}</p>
-      <div class="" style="height: 25px; border: 1px; border-color: rgb(160,160,255);
-       text-align: center; background-color: #99CC99; width: 100%;
-       margin-bottom: 10px;" ui-sref="readBooks({ reviewId: $ctrl.review._id })" ng-click="$ctrl.view($ctrl.review._id)">
-        <p style="color: white; font-weight: bold;">ĐỌC SÁCH</p>
-      </div>
+    <div class="col s12 information z-depth-1" style="margin-top: 10px; padding: 10px 0">
+      <div class="center" style="font-size: 16px; font-weight: bold;">Mô tả</div>
+      <div style="padding: 10px;" class="ellipsis">{{$ctrl.review.description}}</div>
+      <button ui-sref="readBooks({ reviewId: $ctrl.review._id })" ng-click="$ctrl.view($ctrl.review._id)" class="col s12 m8 offset-m2 l6 offset-l3 btn btn-large waves-effect indigo">
+        Đọc sách
+      </button>
     </div>
 
     <div class="col s12 information" style="margin-top: 10px;">
-      <div class="col s10">
-        <p style="font-size: 16px; font-weight: bold;">Người dùng nhận xét</p>
+      <div class="center" style="font-size: 16px; font-weight: bold;">Người dùng nhận xét</div>
       </div>
-      <div class="col s2" style="margin-top: 3px;">
-        <i class="material-icons">border_color</i>
-      </div>
-      <div class="col s4">
-        <div class="style-text" style="text-align: center; font-size: 16px; font-weight: bold;">{{$ctrl.review.star}}/5</div>
-        <div class="amber-text book-rating">
-          <i class="material-icons stars_hide" style="margin-right: -5px;" id="trues-0">star</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px;" id="trues-1">star</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px;" id="trues-2">star</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px;" id="trues-3">star</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px; " id="trues-4">star</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px;" id="falses-0">star_border</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px;" id="falses-1">star_border</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px;" id="falses-2">star_border</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px;" id="falses-3">star_border</i>
-          <i class="material-icons stars_hide" style="margin-right: -5px;" id="falses-4">star_border</i>
-        </div>
-      </div>
-      <div class="col s8">
-          <div class="col s10 amber-text book-rating">
-            <i class="material-icons " style="margin-left: 40px;">star</i>
-            <i class="material-icons " style="margin-right: -5;" >star</i>
-            <i class="material-icons " style="margin-right: -5px;" >star</i>
-            <i class="material-icons " style="margin-right: -5px;">star</i>
-            <i class="material-icons " style="margin-right: -5px; " >star</i>
-            
-          </div>
-          <div class="col s2">
-            <i>14</i>
-          </div>
-          <div class="col s10 amber-text book-rating">
-            <i class="material-icons " style="margin-left: 40px;">star</i>
-            <i class="material-icons " style="margin-right: -5;" >star</i>
-            <i class="material-icons " style="margin-right: -5px;" >star</i>
-            <i class="material-icons " style="margin-right: -5px;">star</i>
-            <i class="material-icons " style="margin-right: -5px; " >star_border</i>
-            
-          </div>
-          <div class="col s2">
-            <i>14</i>
-          </div>
-          <div class="col s10 amber-text book-rating">
-            <i class="material-icons " style="margin-left: 40px;">star</i>
-            <i class="material-icons " style="margin-right: -5;" >star</i>
-            <i class="material-icons " style="margin-right: -5px;" >star</i>
-            <i class="material-icons " style="margin-right: -5px;">star_border</i>
-            <i class="material-icons " style="margin-right: -5px; " >star_border</i>
-            
-          </div>
-          <div class="col s2">
-            <i>14</i>
-          </div>
-          <div class="col s10 amber-text book-rating">
-            <i class="material-icons " style="margin-left: 40px;">star</i>
-            <i class="material-icons " style="margin-right: -5;" >star</i>
-            <i class="material-icons " style="margin-right: -5px;" >star_border</i>
-            <i class="material-icons " style="margin-right: -5px;">star_border</i>
-            <i class="material-icons " style="margin-right: -5px; " >star_border</i>
-            
-          </div>
-          <div class="col s2">
-            <i>14</i>
-          </div>
-
-          <div class="col s10 amber-text book-rating">
-            <i class="material-icons " style="margin-left: 40px;">star</i>
-            <i class="material-icons " style="margin-right: -5;" >star_border</i>
-            <i class="material-icons " style="margin-right: -5px;" >star_border</i>
-            <i class="material-icons " style="margin-right: -5px;">star_border</i>
-            <i class="material-icons " style="margin-right: -5px; " >star_border</i>
-            
-          </div>
-          <div class="col s2">
-            <i>14</i>
-          </div>
-      </div>
-      <div class="col s12" ui-sref="commentReviews({reviewId: $ctrl.review._id})">
-        <p style="color: black; font-weight: bold;">viet binh luan</p>
-      </div>
+      <button ui-sref="commentReviews({reviewId: $ctrl.review._id})" class="col s12 m8 offset-m2 l6 offset-l3 btn waves-effect indigo">
+        Viết nhận xét
+      </button>
     </div>
   </div>
-  <div ng-if="$ctrl.logined && !$ctrl.bookcase" class="fixed-action-btn add-mine" ng-click="$ctrl.add($ctrl.review._id)">
-    <a class="btn-floating btn-large red">
-      <i class="material-icons">shopping_cart</i>
+  <div ng-if="$ctrl.logined">
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large waves-effect waves-light amber">
+        <i class="large material-icons white-text">menu</i>
+      </a>
+      <ul>
+        <li ng-if="$ctrl.logined && !$ctrl.bookcase" ng-click="$ctrl.add($ctrl.review._id)" class="add-mine">
+          <a class="btn-floating waves-effect waves-light white"><i class="material-icons indigo-text">add</i></a>
+        </li>
+        <li ng-if="$ctrl.logined && $ctrl.bookcase" ng-click="$ctrl.remove($ctrl.review._id)" class="remove-mine">
+          <a class="btn-floating waves-effect waves-light white"><i class="material-icons indigo-text">remove</i></a>
+        </li>
+        <li ng-if="$ctrl.logined && !$ctrl.love" ng-click="$ctrl.add_love($ctrl.review._id)">
+          <a class="btn-floating white"><i class="fa fa-heart red-text" aria-hidden="true"></i>
+        </li>
+        <li ng-if="$ctrl.logined && $ctrl.love" ng-click="$ctrl.remove_love($ctrl.review._id)">
+          <a class="btn-floating white"><i class="fa fa-heart-o red-text" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-action-btn" ng-if="!$ctrl.logined" ui-sref="login({loginID: 2})">
+    <a class="btn-floating btn-large waves-effect waves-light amber">
+      <i class="large material-icons white-text">menu</i>
     </a>
   </div>
-  <div ng-if="$ctrl.logined && $ctrl.bookcase" class="fixed-action-btn remove-user" ng-click="$ctrl.remove($ctrl.review._id)">
-    <a class="btn-floating btn-large red">
-      <i class="material-icons">remove_shopping_cart</i>
-    </a>
-  </div>
-  <div ng-if="!$ctrl.logined" class="fixed-action-btn remove-mine" ui-sref="login({loginID: 2})">
-    <a class="btn-floating btn-large red">
-      <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-    </a>
-  </div>
-</div>
-<style>
-  .image_banners {
-    height: 80%;
-    padding-top: 10px;
-    margin-left: auto;
-	  margin-right: auto;
-  }
-  .image_baner {
-    text-align: center;
-    border-bottom: 1px solid black;
-    border-color: rgb(160,160,255);
-  }
-
-  .banner_book {
-    position: absolute;
-    top: 34%;
-    right: 10%;
-    border-radius: 5px;
-    background-color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-  .icon_heard { 
-    margin-top: 25%; 
-  }
-
-  .name_book {
-    background-color: white;
-    z-index: 0;
-    border-bottom: 1px solid black;
-    border-color: rgb(160,160,255);
-  }
-  .style-text {
-    padding-top: 10px;
-    padding-left: 10px;
-  }
-
-  .information {
-    background-color: white;
-    border-bottom: 1px solid black;
-    border-color: rgb(160,160,255);
-  }
-
-  .a {
-    margin-bottom: 0!important;
-  }
-  .over {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 13;
-    -webkit-box-orient: vertical; 
-  }
-  .stars_hide {
-    display: none;
-  }
-</style>
-
-
-<script>
-  setTimeout(function() {
-    var tmp = parseInt($('#star_review').val());
-    for(var i = 0; i < tmp; i++) {
-      var pos = '#true-' + i.toString();
-      $(pos).show();
-      var poss = '#trues-' + i.toString();
-      $(poss).show();
+  <style>
+    .image_baner {
+      height: 65vh;
+      text-align: center;
+      margin: 0 -2%;
     }
-    for(var j = 0; j < 5 - tmp; j++) {
-      var pos2 = '#false-' + j.toString();
-      $(pos2).show();
-
-      var pos2s = '#falses-' + j.toString();
-      $(pos2s).show();
+    
+    .style-text {
+      padding-top: 10px;
+      padding-left: 10px;
     }
-  }, 1000)
-</script>
+    
+    .information {
+      background-color: white;
+    }
+    
+    .a {
+      margin-bottom: 0!important;
+    }
+    
+    .ellipsis {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 13;
+      -webkit-box-orient: vertical;
+    }
+    
+    .stars_hide {
+      display: none;
+    }
+  </style>
+
+  <script>
+    setTimeout(function () {
+      var tmp = parseInt($('#star_review').val());
+      for (var i = 0; i < tmp; i++) {
+        var pos = '#true-' + i.toString();
+        $(pos).show();
+        var poss = '#trues-' + i.toString();
+        $(poss).show();
+      }
+      for (var j = 0; j < 5 - tmp; j++) {
+        var pos2 = '#false-' + j.toString();
+        $(pos2).show();
+
+        var pos2s = '#falses-' + j.toString();
+        $(pos2s).show();
+      }
+    }, 2000)
+  </script>

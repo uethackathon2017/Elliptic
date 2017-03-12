@@ -3,21 +3,40 @@
     <img src="{{$ctrl.book.cover}}" alt="">
     <h5>{{$ctrl.book.name}}</h5>
   </div>
-  <form>
-    <div class="description">
-      <p>Mô tả:</p>
-      <textarea rows="3" id="mota"></textarea>
-    </div>
-    <p>Nội dung:</p>
-    <div class="note">
-      <div class="editable nd">
+  <div ng-if="!$ctrl.review">
+    <form>
+      <div class="description">
+        <p>Mô tả:</p>
+        <textarea rows="3" id="mota"></textarea>
       </div>
-    </div>
-    <button ng-click="$ctrl.save()" class="btn">Save</button>
-  </form>
+      <p>Nội dung:</p>
+      <div class="note">
+        <div class="editable nd">
+        </div>
+      </div>
+      <button ng-click="$ctrl.save()" class="btn">Save</button>
+    </form>
+  </div>
+  <div ng-if="$ctrl.review">
+    <form>
+      <div class="description">
+        <p>Mô tả:</p>
+        <textarea rows="3" id="mota">{{$ctrl.review.description}}</textarea>
+      </div>
+      <p>Nội dung:</p>
+      <div class="note">
+        <div class="editable nd">
+          <p ng-bind-html="$ctrl.review.content | unsafe"></p>
+        </div>
+      </div>
+      <button ng-click="$ctrl.save()" class="btn">Save</button>
+    </form>
+  </div>
 </div>
 <script src="js/medium.js"></script>
-<script>var editor = new MediumEditor('.editable');</script>
+<script>
+  var editor = new MediumEditor('.editable');
+</script>
 <style>
   .note {
     min-height: 10vh;
