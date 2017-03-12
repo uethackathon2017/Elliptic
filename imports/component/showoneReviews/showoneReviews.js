@@ -59,6 +59,24 @@ class ShowoneReviewsCtrl {
             }
           } 
         }
+      },
+      love() {
+        if (Meteor.userId()) {
+          var review = Reviews.findOne({ "_id": this.review_id });
+          if (review) {
+            if (Meteor.user().profile.love) {
+            var user_of = Meteor.user().profile.love;
+            for (var i = 0; i < user_of.length; i++) {
+              if (user_of[i] == review._id) {
+                return true;
+              }
+            }
+            return false;  
+            } else {
+              return false;
+            }
+          } 
+        }
       }
     })
   }
@@ -115,6 +133,50 @@ class ShowoneReviewsCtrl {
           "user_view": (number + 1).toString()
         }
     })
+  }
+
+  add_love(reviewID) {
+    var love = []
+    if (Meteor.user().profile.love) {
+      love = Meteor.user().profile.love;
+    } else {
+      love = [];
+    }
+    var check = true;
+    for (var i = 0; i < love.length; i++) {
+      if (love[i] == reviewID) {
+        check = false;
+      }
+    }
+    if (check) {
+      love.push(reviewID);
+    }
+    Meteor.users.update({
+      "_id": Meteor.userId()
+    },
+      {
+        $set: {
+          "profile.love": love
+        }
+    });
+    console.log(Meteor.user());
+  }
+  remove_love(reviewID) {
+    var review = Reviews.findOne({ "_id": reviewID });
+    var love = Meteor.user().profile.love;
+    var check = true;
+    for (var i = 0; i < love.length; i++) {
+      if (love[i] == reviewID)
+        love.splice(i, 1);  
+    }
+     Meteor.users.update({
+      "_id": Meteor.userId()
+    },
+      {
+        $set: {
+          "profile.love": love
+        }
+    });
   }
 }
 const name = 'showoneReviews';

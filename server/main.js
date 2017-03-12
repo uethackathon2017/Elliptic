@@ -7,7 +7,3 @@ import { Comments } from '../imports/api/comments.js';
 Meteor.startup(() => {
   // Reviews.remove({});
 });
-
-// Meteor.AppCache.config({
-//   onlineOnly: ['/modules.js']
-// });

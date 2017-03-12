@@ -26,9 +26,11 @@
   </li>
   <div ng-if="$ctrl.logined">
     <li><a href="/bookCases" class="waves-effect white-text"><i class="fa fa-book fa-lg white-text"></i><span class="menu-text">Kho sách</span></a></li>
-    <li><a href="#!" class="waves-effect white-text"><i class="fa fa-heart fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Sách yêu thích</span></a></li>
-    <li><a href="/upload" class="waves-effect white-text" onclick="window.location.reload(true);"><i class="fa fa-pencil fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Viết sách</span></a></li>
-    <li><a href="/admin/categories" class="waves-effect white-text"><i class="fa fa-cogs fa-lg white-text"></i><span class="menu-text">Quản trị</span></a></li>
+    <li><a href="/loveBooks" class="waves-effect white-text"><i class="fa fa-heart fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Sách đã đọc</span></a></li>
+    <li><a href="/challenges" class="waves-effect white-text"><i class="fa fa-heart fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Đặt cược thời gian</span></a></li>
+    <li><a href="/rank" class="waves-effect white-text"><i class="fa fa-heart fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Bảng xếp hạng</span></a></li>
+    <li><a href="/summerWrites" class="waves-effect white-text"><i class="fa fa-pencil fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Tóm tắt đã viết</span></a></li>
+    <li ng-if="$ctrl.user.username == 'admin'"><a href="/admin/categories" class="waves-effect white-text"><i class="fa fa-cogs fa-lg white-text"></i><span class="menu-text">Quản trị</span></a></li>
     <li><a href="/logout" class="waves-effect white-text"><i class="fa fa-sign-out fa-lg white-text" aria-hidden="true"></i><span class="menu-text">Đăng xuất</span></a></li>
   </div>
   </li>

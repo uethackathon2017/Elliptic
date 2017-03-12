@@ -3,8 +3,20 @@
     <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
     <form method="GET" action="search">
       <input id="search" name="search" type="text" placeholder="Tìm sách" value="">
-      <i class="material-icons" style="display: inline-block;">search</i>
+      <button id="search-button">
+        <i class="material-icons" style="display: inline-block;">search</i>
+      </button>
     </form>
     <sidebar></sidebar>
   </div>
 </nav>
+<style>
+  #search-button {
+    height: 56px;
+    width: 56px;
+    background: transparent;
+    border: none;
+    margin-left: -20px;
+    float: right;
+  }
+</style>

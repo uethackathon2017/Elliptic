@@ -1,15 +1,12 @@
 <div class="container">
-  <div class="progress">
-    <div class="indeterminate"></div>
-  </div>
   <input type="hidden" id="number" value="{{$ctrl.all_review.length}}">
-  <div ng-if="$ctrl.all_review" style="margin: 0;" class="row">
-    <h4 class="center indigo-text ellipsis" style="-webkit-line-clamp: 1; font-weight: 300">{{$ctrl.book_cover.name}}</h4>
+  <div ng-if="$ctrl.all_review" style="margin: 45px 0px 0px 0px;" class="row">
+    <h5 class="center indigo-text ellipsis" style="margin-top: 64px; -webkit-line-clamp: 1;">{{$ctrl.book_cover.name}}</h5>
     <div class="col s12 m8 offset-m2 l5 white z-depth-1" ng-repeat="review in $ctrl.all_review track by $index" ui-sref="showoneReviews({ reviewId: review._id })"
       style="padding: 5px 10px; max-height: 30vh; margin-top: 1vh; border-radius: 1%">
       <img ng-src="{{review.avatar}}" alt="{{review.name}}" class="user-image responsive-image circle">
       <div style="margin-left: 1%; display: inline-block; position: absolute; margin-right: 3%;">
-        <div class="amber-text" style="font-size: 18px;">{{review.user_name}}</div>
+        <h5 class="amber-text">{{review.user_name}}</h5>
         <input type="hidden" id="star{{$index}}" value="{{review.star}}">
         <div class="amber-text book-rating">
           <i class="material-icons stars_hide" style="margin-right: -5px;" id="true-0{{$index}}">star</i>
@@ -30,16 +27,12 @@
     </div>
   </div>
   <div ng-if="!$ctrl.all_review" style="margin-top: 50vh;">
-    <h5 class="indigo-text center">Chưa có dữ liệu</h5>
+    <h5 class="indigo-text center">Bạn chưa đọc cuốn sách nào</h5>
   </div>
   <div class="fixed-action-btn">
     <a class="btn-floating btn-large red" ui-sref="writeReviews({reviewId: $ctrl.book_cover._id})">
       <i class="large material-icons">add</i>
     </a>
-  <div class="not-found" ng-if="!$ctrl.all_review">
-    <h5 class="indigo-text center" style="margin-top: 40vh;">
-      Không tìm thấy sách theo từ khóa "{{$ctrl.params}}"
-    </h5>
   </div>
 </div>
 <style>
@@ -73,6 +66,7 @@
   
   .read-num {
     font-style: italic;
+    margin-top: -4px;
   }
   
   .ellipsis {
@@ -97,9 +91,5 @@
         $(pos2).show();
       }
     }
-  }, 500);
-  $(function () {
-    $('.progress').delay(5000).hide(0);
-    $('.not-found').delay(5500).show(0);
-  });
+  }, 1000);
 </script>

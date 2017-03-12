@@ -61,52 +61,65 @@ angularMeteor, navbar.name
 function config($stateProvider) {
   'ngInject';
  
-  $stateProvider.state('readBooks', {
+    $stateProvider.state('readBooks', {
     url: '/readBooks/:reviewId',
     template: '<read-books></read-books>',
     onEnter: function() {
       console.log(Date.now());
       Session.set("start", Date.now());
     },
-    onExit : function(){
+    onExit : function($stateParams){
      var tmp_time = Session.get("start");
      var timming = Date.now() - tmp_time;
-     var user = Meteor.user();
-     var id = this.params.reviewId; 
+      var user = Meteor.user();
+     // console.log($stateParams.reviewId);
+     // console.log($stateParams);
+     var id =$stateParams.reviewId;
+     console.log(id);
      var tmp = user.profile.readed_book;
-     if (!tmp) {
-       var tmp_readed = [];
-       var data = { "review_id": id, "hour": timming };
-       tmp_readed.push(data);
-       	Meteor.users.update({
-					_id : Meteor.userId()
-				},{
-					$set : {
-						"profile.readed_book" : data,
-					}
-            });
-        console.log(Meteor.user());
+     if (tmp) {
+      var datas = tmp;
+      console.log(tmp);
+      for (var i = 0 ; i < tmp.length; i++){
+        if(tmp[i].review_id == id){
+           var time_old = datas[i].timming;
+           var time_new = timming + parseInt(time_old);
+           datas[i].timming = time_new;
+           Meteor.users.update({
+              _id : Meteor.userId()
+            },{
+              $set : {
+                "profile.readed_book" : datas,
+              }
+          }); 
+           break;
+        } else {
+           var tmp_readed = [];
+           var data = { "review_id": id, "timming": timming };
+           tmp_readed.push(data);
+            Meteor.users.update({
+              _id : Meteor.userId()
+            },{
+              $push : {
+                "profile.readed_book" : data,
+              }
+                });
+        }
+      }
+
      } else {
        var tmp_readed = [];
-       var datas = tmp;
-       for (var i = 0; i < datas.length; i++) {
-         if (data[i].review_id == id) {
-           var time_old = data[i].hour;
-           var time_new = timming + parseInt(time_old);
-           data[i].hour = time_new;
-           break;
-         }
-       }
-       Meteor.users.update({
-					_id : Meteor.userId()
-				},{
-					$set : {
-						"profile.readed_book" : datas,
-					}
-      });
+           var data = { "review_id": id, "timming": timming };
+           tmp_readed.push(data);
+            Meteor.users.update({
+              _id : Meteor.userId()
+            },{
+              $push : {
+                "profile.readed_book" : data,
+              }
+                });
      }
-     
-  }
-});
+    }
+  });
 }
 
